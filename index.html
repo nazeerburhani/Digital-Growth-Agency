@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Growth Agency & QuranHub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -41,11 +40,6 @@
       .premium-shadow {
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
       }
-      .glass-card {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -63,16 +57,19 @@
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
+    "framer-motion": "https://esm.sh/framer-motion@^12.34.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
-    "framer-motion": "https://esm.sh/framer-motion@^12.34.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+    "react": "https://esm.sh/react@^19.2.4",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/main.tsx"></script>
   </body>
 </html>
