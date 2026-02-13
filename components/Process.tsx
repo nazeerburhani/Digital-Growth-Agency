@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PROCESS_STEPS } from '../constants';
-// Changed import from '../App' to '../types' as App.tsx was removed
 import { ViewType } from '../types';
 import { Rocket } from 'lucide-react';
 
@@ -11,46 +10,52 @@ interface ProcessProps {
 
 const Process: React.FC<ProcessProps> = ({ onNavigate }) => {
   return (
-    <section id="process" className="py-24 bg-[#eef7f5] px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1c1e21] mb-6">Our Success <span className="text-[#ff6b6b]">Framework</span></h2>
-          <p className="text-lg text-[#6b7280] max-w-2xl mx-auto">
-            A battle-tested 4-step process designed to take projects from initial vision to massive scale.
+    <section id="process" className="py-40 lg:py-64 bg-[#0a0a0c] px-6 overflow-hidden relative">
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      
+      <div className="section-container">
+        <div className="text-center mb-32">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-[#0fb9b1] font-black text-[12px] uppercase tracking-[0.8em] mb-10"
+          >
+            Operational Framework
+          </motion.div>
+          <h2 className="text-6xl md:text-8xl lg:text-[100px] font-bold text-white mb-10 tracking-tighter leading-none">
+            Success <span className="gradient-text-teal">Logistics.</span>
+          </h2>
+          <p className="text-2xl text-white/30 max-w-2xl mx-auto font-light leading-relaxed">
+            A battle-tested 4-step framework designed to take high-stakes projects from zero to market dominance.
           </p>
         </div>
 
-        <div className="relative mb-20">
-          {/* Connecting Line (Desktop) */}
-          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -translate-y-1/2 hidden lg:block" />
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute top-1/2 left-0 w-full h-0.5 bg-[#0fb9b1] -translate-y-1/2 hidden lg:block origin-left z-0" 
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+        <div className="relative mb-32">
+          {/* Central Connector Line */}
+          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5 -translate-y-1/2 hidden lg:block" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 relative z-10">
             {PROCESS_STEPS.map((step, index) => (
               <motion.div
                 key={step.id}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white p-10 rounded-[36px] shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col items-center text-center group"
+                transition={{ delay: index * 0.2, duration: 1 }}
+                className="bg-white/[0.03] p-12 lg:p-14 rounded-[60px] border border-white/5 hover:border-[#0fb9b1]/40 transition-all duration-700 flex flex-col items-center text-center group backdrop-blur-3xl"
               >
-                <div className="w-16 h-16 rounded-2xl bg-[#0fb9b1] text-white flex items-center justify-center mb-8 shadow-lg shadow-teal-100 group-hover:rotate-[15deg] transition-transform">
-                  {step.icon}
+                <div className="w-24 h-24 rounded-[35px] bg-[#0fb9b1]/10 text-[#0fb9b1] flex items-center justify-center mb-12 shadow-2xl transition-all duration-700 group-hover:scale-110 group-hover:bg-[#0fb9b1] group-hover:text-white">
+                  {React.cloneElement(step.icon as React.ReactElement, { size: 36 })}
                 </div>
-                <div className="absolute top-4 right-8 text-6xl font-black text-gray-50 -z-10 group-hover:text-[#eef7f5] transition-colors">
+                
+                <div className="absolute top-10 right-10 text-8xl font-black text-white/[0.02] -z-10 group-hover:text-[#0fb9b1]/5 transition-colors duration-1000">
                   0{step.id}
                 </div>
-                <h3 className="text-2xl font-bold text-[#1c1e21] mb-4">
+                
+                <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-[#6b7280] leading-relaxed">
+                <p className="text-white/30 leading-relaxed font-light group-hover:text-white/60 transition-colors duration-700">
                   {step.desc}
                 </p>
               </motion.div>
@@ -63,10 +68,10 @@ const Process: React.FC<ProcessProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('project-form')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-[#0fb9b1] text-white px-12 py-5 rounded-2xl font-bold text-xl flex items-center gap-3 shadow-xl shadow-teal-500/10"
+            className="btn-primary"
           >
-            Start Your Journey
-            <Rocket size={24} />
+            Initiate Deployment
+            <Rocket size={24} className="animate-pulse" />
           </motion.button>
         </div>
       </div>

@@ -12,13 +12,12 @@ import {
   Atom,
   Binary,
   GraduationCap,
-  MessageSquare,
+  Cpu,
   ShieldCheck,
-  CheckCircle,
-  Lightbulb
+  Lightbulb,
+  CheckCircle2
 } from 'lucide-react';
 
-// Restoring the original provided images
 export const HERO_VISUAL = "https://raw.githubusercontent.com/nazeerburhani/website-assets/main/IMG_20250818_091711.jpg"; 
 export const VISION_VISUAL = "https://raw.githubusercontent.com/nazeerburhani/website-assets/main/a-cinematic-studio-portrait-of-a-young-a_BWWQHxNzSBqguh8zqisQrg_DeCNTomnToWS2CnTs86EKg.jpeg";
 export const ABOUT_VISUAL = "https://raw.githubusercontent.com/nazeerburhani/website-assets/main/IMG_20251031_084101.jpg";
@@ -35,76 +34,90 @@ export const CONTACT_LINKS = {
 export const SERVICES = [
   {
     title: "Web Architecture",
-    description: "Engineering high-performance web systems using cutting-edge React & Next.js frameworks for global scalability.",
-    icon: <Globe className="w-8 h-8 text-[#0fb9b1]" />,
+    description: "Engineering high-performance web systems using cutting-edge architectural standards for global scalability.",
+    icon: <Cpu className="w-10 h-10" />,
+    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop"
   },
   {
-    title: "Growth Systems",
-    description: "Strategic performance marketing and conversion optimization designed to dominate digital marketplaces.",
-    icon: <Target className="w-8 h-8 text-[#0fb9b1]" />,
+    title: "Growth Logistics",
+    description: "Strategic performance engineering and conversion logistics designed to dominate saturated marketplaces.",
+    icon: <Zap className="w-10 h-10" />,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "Learning Portals",
-    description: "Architecting bespoke educational ecosystems that bridge tradition with modern pedagogical excellence.",
-    icon: <BookOpen className="w-8 h-8 text-[#0fb9b1]" />,
+    description: "Architecting bespoke pedagogical ecosystems that fuse sacred tradition with modern scientific precision.",
+    icon: <BookOpen className="w-10 h-10" />,
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop"
   }
 ];
 
 export const QURAN_SUBJECTS = [
-  { name: "Quran with Tajweed", icon: <BookOpen className="w-6 h-6" /> },
-  { name: "Hifz Program", icon: <Award className="w-6 h-6" /> },
-  { name: "Islamic Studies", icon: <Compass className="w-6 h-6" /> },
-  { name: "Pure Mathematics", icon: <Binary className="w-6 h-6" /> },
-  { name: "Advanced Physics", icon: <Atom className="w-6 h-6" /> },
-  { name: "Computing", icon: <Zap className="w-6 h-6" /> },
-];
-
-export const ACADEMY_STATS = [
-  { label: "Global Learners", value: "12,400+" },
-  { label: "Elite Teachers", value: "48" },
-  { label: "Active Countries", value: "22" },
-  { label: "Success Rate", value: "99.8%" },
-];
-
-export const ACADEMY_PROCESS = [
-  { title: "Diagnostic Audit", desc: "We evaluate current knowledge levels to architect a custom mastery roadmap." },
-  { title: "Mentor Alignment", desc: "Pairing students with specialists based on learning style and long-term goals." },
-  { title: "Active Learning", desc: "Synchronous sessions combined with a proprietary resource portal for 24/7 progress." },
-  { title: "Certification", desc: "Rigorous assessment and formal accreditation through the Mastery Bureau." }
-];
-
-export const ACADEMY_FAQS = [
-  { q: "Is the QuranHub Academy strictly for children?", a: "While we specialize in youth development, we offer bespoke adult programs for Quranic sciences and professional digital skills." },
-  { q: "How are instructors selected?", a: "Our vetting process includes 3-stage testing: Technical/Spiritual competency, Pedagogical ability, and background verification." },
-  { q: "Do you offer physical sessions?", a: "We are primarily a digital-first bureau to ensure the best talent reaches global students, however private in-person sessions can be arranged." },
-  { q: "What is the QuranHub learning portal?", a: "It's a custom-built LMS where students track progress, access recordings, and receive direct feedback from mentors." }
-];
-
-export const ACADEMY_FEATURES = [
-  { title: "Holistic Pedagogy", desc: "Merging sacred tradition with modern scientific inquiry.", icon: <Lightbulb size={24} /> },
-  { title: "Mastery Focus", desc: "We teach for retention and application, not just completion.", icon: <CheckCircle size={24} /> },
-  { title: "Global Accredited", desc: "Recognized certifications by international standards.", icon: <ShieldCheck size={24} /> },
-  { title: "Family Support", desc: "Direct concierge line for parents to track excellence.", icon: <MessageSquare size={24} /> }
-];
-
-export const PROCESS_STEPS = [
-  { id: 1, title: "Audit", icon: <Target className="w-6 h-6" />, desc: "Deep-dive analysis into market gaps and platform potential." },
-  { id: 2, title: "Architect", icon: <Zap className="w-6 h-6" />, desc: "Engineering the foundational systems for long-term scalability." },
-  { id: 3, title: "Deploy", icon: <Rocket className="w-6 h-6" />, desc: "Strategic launch with growth-hacking tracking enabled." },
-  { id: 4, title: "Optimize", icon: <BarChart3 className="w-6 h-6" />, desc: "Recursive refinement based on live behavioral data." },
+  { name: "Tajweed Mastery", icon: <BookOpen />, desc: "The Science of Articulation." },
+  { name: "Hifz Program", icon: <Award />, desc: "Divine Memorization Track." },
+  { name: "Pure Mathematics", icon: <Binary />, desc: "Universal Logic & Algebra." },
+  { name: "Quantum Physics", icon: <Atom />, desc: "The Laws of Creation." },
 ];
 
 export const PROJECTS = [
   { 
     title: "QuranHub LMS", 
-    category: "EdTech Bureau", 
+    category: "EdTech Platform", 
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-    desc: "A custom-engineered educational ecosystem facilitating mastery across 22 countries."
+    desc: "A bespoke Learning Management System designed for interactive Quranic studies and academic tracking."
   },
   { 
-    title: "Growth Dashboard", 
-    category: "SaaS Enterprise", 
+    title: "MarketFlow SaaS", 
+    category: "SaaS Development", 
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-    desc: "Proprietary ROI tracking system for high-volume performance marketing agencies."
-  }
+    desc: "A powerful marketing analytics dashboard providing real-time ROI tracking for digital agencies."
+  },
+  { 
+    title: "SwiftRetail E-com", 
+    category: "E-commerce System", 
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop",
+    desc: "A custom headless Shopify solution optimized for ultra-fast checkout and high retention."
+  },
+  { 
+    title: "Pulse Ads Manager", 
+    category: "Performance Dashboard", 
+    image: "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=2002&auto=format&fit=crop",
+    desc: "Automated ad management platform integrating Facebook and Google APIs for optimized spending."
+  },
 ];
+
+export const PROCESS_STEPS = [
+  { id: 1, title: "Strategy", icon: <Target className="w-6 h-6" />, desc: "In-depth market analysis and architecture planning." },
+  { id: 2, title: "Build", icon: <Zap className="w-6 h-6" />, desc: "Expert development and pedagogical content creation." },
+  { id: 3, title: "Launch", icon: <Rocket className="w-6 h-6" />, desc: "System testing and live deployment with growth triggers." },
+  { id: 4, title: "Scale", icon: <BarChart3 className="w-6 h-6" />, desc: "Continuous optimization through data and feedback loops." },
+];
+
+export const ACADEMY_STATS = [
+  { label: "Global Learners", value: "12,400+", icon: <Users size={20}/> },
+  { label: "Success Rate", value: "99.8%", icon: <Award size={20}/> },
+  { label: "Active Nations", value: "22+", icon: <Globe size={20}/> },
+  { label: "Elite Mentors", value: "48", icon: <ShieldCheck size={20}/> },
+];
+
+export const ACADEMY_PROCESS = [
+  { title: "Initial Assessment", desc: "We evaluate current proficiency and set baseline goals." },
+  { title: "Pathway Selection", desc: "Choosing between memorization, linguistics, or STEM mastery." },
+  { title: "Active Learning", desc: "Interactive sessions with real-time feedback and tracking." },
+  { title: "Certification", desc: "Final assessment and global recognition of achievement." },
+];
+
+export const ACADEMY_FAQS = [
+  { q: "Is the academy suitable for beginners?", a: "Yes, we have foundational tracks designed specifically for those starting their journey." },
+  { q: "Are classes available globally?", a: "Our portal is optimized for low-latency streaming across 22+ countries." },
+  { q: "What is the student-to-teacher ratio?", a: "We maintain a strict ratio of 1:12 to ensure precision-guided learning." },
+];
+
+export const ACADEMY_FEATURES = [
+  { title: "Verified Mastery", desc: "Rigorous certification from global authorities.", icon: <ShieldCheck /> },
+  { title: "Personalized Track", desc: "Curriculum tailored to individual pace and level.", icon: <Target /> },
+  { title: "Expert Mentorship", desc: "Learn from specialists with decades of experience.", icon: <GraduationCap /> },
+  { title: "Sacred Context", desc: "Traditional values meeting modern scientific rigor.", icon: <Lightbulb /> },
+];
+
+import { Users } from 'lucide-react';

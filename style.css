@@ -1,4 +1,84 @@
-/* Luxury Animations & Effects */
+/* Luxury Theme System */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --brand-teal: #0fb9b1;
+    --brand-coral: #ff6b6b;
+    --brand-dark: #050505;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--brand-dark);
+}
+
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+
+/* Cinematic Service Cards */
+.luxury-service-card {
+    @apply relative overflow-hidden rounded-[80px] h-[700px] cursor-pointer border border-white/10 bg-[#0a0a0a] transition-all duration-[1.2s] shadow-3xl;
+}
+
+.luxury-card-img {
+    @apply absolute inset-0 bg-cover bg-center grayscale opacity-25 transition-all duration-[2s] scale-110;
+}
+
+.luxury-service-card:hover .luxury-card-img {
+    @apply grayscale-0 opacity-40 scale-100;
+}
+
+.luxury-card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent transition-opacity duration-1000;
+}
+
+.luxury-icon-box {
+    @apply w-24 h-24 rounded-[35px] bg-brand-teal text-white flex items-center justify-center mb-16 shadow-4xl border border-white/10 transition-all duration-700;
+}
+
+.luxury-service-card:hover .luxury-icon-box {
+    @apply -translate-y-4 bg-white text-brand-teal scale-110 shadow-brand-teal/20;
+}
+
+.luxury-card-link {
+    @apply flex items-center gap-6 text-brand-teal font-black text-[13px] uppercase tracking-[0.6em] transition-all duration-700 opacity-0 translate-y-8;
+}
+
+.luxury-service-card:hover .luxury-card-link {
+    @apply opacity-100 translate-y-0;
+}
+
+/* Master Buttons */
+.btn-master-primary {
+    @apply relative overflow-hidden bg-brand-teal text-white px-16 py-7 rounded-[30px] font-black text-[14px] uppercase tracking-[0.6em] transition-all duration-700 shadow-xl flex items-center justify-center gap-6 border border-white/20 active:scale-95;
+}
+
+.btn-master-primary:hover {
+    @apply -translate-y-2 scale-[1.03] bg-[#12cbc4] shadow-brand-teal/40;
+}
+
+.btn-master-outline {
+    @apply relative overflow-hidden bg-white/[0.04] backdrop-blur-3xl border border-white/10 text-white px-16 py-7 rounded-[30px] font-black text-[14px] uppercase tracking-[0.6em] transition-all duration-700 flex items-center justify-center gap-6 active:scale-95;
+}
+
+.btn-master-outline:hover {
+    @apply -translate-y-2 scale-[1.03] bg-brand-coral border-brand-coral/40 shadow-brand-coral/40;
+}
+
+.btn-master-primary::after, .btn-master-outline::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full transition-transform duration-[0.8s] skew-x-[35deg] pointer-events-none;
+}
+
+.btn-master-primary:hover::after, .btn-master-outline:hover::after {
+    @apply translate-x-full;
+}
+
+/* Base Styles */
+.section-container {
+    @apply max-w-[1700px] mx-auto px-12 sm:px-20 md:px-28 lg:px-44 xl:px-52;
+}
 
 .gradient-text-teal {
     background-clip: text;
@@ -6,7 +86,7 @@
     color: transparent;
     background-image: linear-gradient(to bottom right, #0fb9b1, #20bf6b, #0fb9b1);
     background-size: 200% auto;
-    animation: gradient-flow 5s ease infinite;
+    animation: gradient-flow 6s ease infinite;
 }
 
 @keyframes gradient-flow {
@@ -15,22 +95,23 @@
     100% { background-position: 0% 50%; }
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+.text-legacy {
+    color: rgba(255, 255, 255, 0.04);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
 }
 
-.glass-card:hover {
-    border-color: rgba(15, 185, 177, 0.3);
-    transform: translateY(-5px);
+.nav-link-premium {
+    @apply text-[11px] font-black uppercase tracking-[0.45em] text-white/30 transition-all duration-500 relative py-2 hover:text-white;
 }
 
-/* Scroll Revelations */
+.nav-link-premium.active { @apply text-white; }
+.nav-link-premium.active::after { content: ''; @apply absolute bottom-0 left-1/2 w-1/2 h-[1px] bg-brand-teal -translate-x-1/2; }
+
+/* Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(80px);
+    transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .reveal.active {
@@ -38,30 +119,36 @@
     transform: translateY(0);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #050505;
-}
-::-webkit-scrollbar-thumb {
-    background: #1a1a1a;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #0fb9b1;
+.header-scrolled {
+    @apply py-5 md:py-6 bg-black/90 backdrop-blur-3xl border-b border-white/[0.08] shadow-2xl;
 }
 
-/* View transitions */
-.view-section {
-    animation: fadeIn 0.6s ease forwards;
+.stat-card-luxury {
+    @apply bg-white/[0.03] p-12 rounded-[50px] border border-white/5 transition-all duration-700 text-center;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.stat-val-luxury { @apply text-4xl lg:text-6xl font-bold mb-3 tracking-tighter; }
+.stat-label-luxury { @apply text-[11px] font-black uppercase tracking-[0.55em] opacity-40; }
+
+.subject-box-luxury {
+    @apply bg-white/[0.02] p-12 rounded-[60px] flex flex-col items-center text-center border border-white/5 hover:border-brand-teal transition-all duration-700;
 }
 
-.delay-200 { transition-delay: 0.2s; }
-.delay-400 { transition-delay: 0.4s; }
+.subject-box-luxury.active { @apply bg-brand-teal/5 border-brand-teal; }
+
+.luxury-contact-card {
+    @apply p-12 rounded-[60px] bg-white/[0.03] border border-white/5 flex flex-col items-center gap-8 transition-all duration-700 hover:bg-white/[0.08] hover:-translate-y-4 flex-1;
+}
+
+.contact-icon-luxury {
+    @apply w-20 h-20 rounded-[30px] flex items-center justify-center text-white shadow-2xl transition-transform duration-700 group-hover:scale-110 group-hover:rotate-12;
+}
+
+.luxury-menu-link {
+    @apply text-6xl font-display font-black text-white tracking-tighter hover:text-brand-teal transition-all duration-700 hover:translate-x-8;
+}
+
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 20px; border: 4px solid #050505; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-teal); }

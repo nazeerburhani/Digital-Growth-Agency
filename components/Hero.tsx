@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Play } from 'lucide-react';
+import { ArrowRight, Sparkles, Play, UserCheck } from 'lucide-react';
 import { HERO_VISUAL } from '../constants';
 import { ViewType } from '../types';
 
@@ -10,11 +11,11 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   const { scrollY } = useScroll();
-  const scale = useTransform(scrollY, [0, 400], [1, 0.9]);
+  const scale = useTransform(scrollY, [0, 500], [1, 0.9]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-48 pb-40 lg:py-0 overflow-hidden">
-      {/* Dynamic Background */}
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-48 pb-40 lg:py-0 overflow-hidden">
+      {/* Cinematic Background */}
       <div className="absolute top-[-15%] left-[-15%] w-[70%] h-[70%] bg-[#0fb9b1]/10 rounded-full blur-[160px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#ff6b6b]/5 rounded-full blur-[140px] pointer-events-none" />
 
@@ -32,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="inline-flex items-center gap-5 px-9 py-4 rounded-full bg-white/[0.04] border border-white/10 text-[#0fb9b1] text-[12px] font-black uppercase tracking-[0.6em] mb-14 lg:mb-20 shadow-3xl backdrop-blur-3xl"
           >
-            <Sparkles size={18} className="text-[#ff6b6b] animate-pulse" />
+            <div className="w-2 h-2 bg-[#0fb9b1] rounded-full animate-ping" />
             Bureau of Strategic Growth
           </motion.div>
           
@@ -45,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             High-performance digital systems for global scale & academic excellence at the forefront of the <span className="text-white/80 font-medium underline underline-offset-[16px] decoration-[#0fb9b1]/40">QuranHub Academy</span>.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-10 w-full max-w-[480px] sm:max-w-none px-6 sm:px-0">
+          <div className="flex flex-col sm:flex-row gap-8 w-full max-w-[550px] sm:max-w-none px-6 sm:px-0">
             <motion.button 
               onClick={() => onNavigate('project-form')}
               whileHover={{ scale: 1.05 }}
@@ -61,12 +62,11 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               whileTap={{ scale: 0.95 }}
               className="btn-outline w-full sm:w-auto"
             >
-              Enter Academy
+              Academy Entry
               <Play size={20} fill="currentColor" className="shrink-0" />
             </motion.button>
           </div>
 
-          {/* Luxury Signature Bar */}
           <div className="mt-24 lg:mt-36 flex items-center justify-center lg:justify-start gap-12 md:gap-20 w-full opacity-40">
             <div className="flex flex-col gap-3 items-center lg:items-start">
                <span className="text-[11px] font-black uppercase tracking-[0.6em] text-white/30">Established</span>
@@ -98,15 +98,17 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
             </div>
 
-            <div className="absolute top-1/2 -left-16 -translate-y-1/2 animate-float hidden 2xl:block">
+            {/* Bureau Head Badge */}
+            <div className="absolute top-1/2 -left-12 -translate-y-1/2 animate-float hidden 2xl:block">
                <div className="bg-[#050505]/95 backdrop-blur-3xl text-white px-10 py-10 rounded-[50px] border border-white/15 shadow-4xl flex flex-col items-center gap-4">
-                 <div className="text-[#0fb9b1] font-black text-5xl tracking-tighter">7+</div>
-                 <div className="text-[11px] font-black uppercase tracking-[0.5em] text-white/30">Years Mastery</div>
+                 <UserCheck className="text-[#0fb9b1] mb-1" size={32} />
+                 <div className="text-[11px] font-black uppercase tracking-[0.5em] text-white/40 text-center">Bureau<br/>Head</div>
                </div>
             </div>
 
+            {/* Signature Badge */}
             <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-max sm:translate-x-0 sm:left-auto sm:right-16 animate-float">
-              <div className="bg-[#0fb9b1] text-white px-14 py-8 rounded-[40px] flex items-center gap-6 shadow-[0_40px_80px_rgba(15,185,177,0.4)] border border-white/30">
+              <div className="bg-[#0fb9b1] text-white px-14 py-8 rounded-[40px] flex items-center gap-6 shadow-[0_40px_80px_rgba(15,185,177,0.4)] border border-white/30 backdrop-blur-xl">
                 <Sparkles size={24} className="animate-pulse" />
                 <span className="font-black text-[14px] uppercase tracking-[0.5em]">Nazeer Ahmad</span>
               </div>

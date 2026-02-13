@@ -1,8 +1,9 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../constants';
 import { ViewType } from '../types';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesProps {
   onNavigate: (view: ViewType) => void;
@@ -10,68 +11,78 @@ interface ServicesProps {
 
 const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
   return (
-    <section className="py-40 lg:py-60 px-6 bg-[#050505] relative overflow-hidden">
+    <section id="services" className="py-40 lg:py-64 bg-[#050505] relative overflow-hidden">
       <div className="section-container">
-        <div className="mb-24 lg:mb-40">
+        <div className="reveal mb-32 lg:mb-48">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-[#0fb9b1] font-black text-[11px] uppercase tracking-[0.7em] mb-8 flex items-center gap-6"
+            className="text-[#0fb9b1] font-black text-[12px] uppercase tracking-[0.8em] mb-10 flex items-center gap-8"
           >
-            <div className="w-14 h-[1px] bg-[#0fb9b1]" />
-            Elite Bureau Capabilities
+            <div className="w-16 h-[2px] bg-[#0fb9b1]" />
+            Bureau Intelligence
           </motion.div>
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-16">
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter leading-none"
+              className="text-5xl sm:text-7xl lg:text-[88px] font-bold tracking-tighter leading-none text-white"
             >
-              Strategic <br />
-              <span className="gradient-text-teal">Impact Engines.</span>
+              Precision <br />
+              <span className="gradient-text-teal">Growth Engines.</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.1 }}
-              className="text-white/30 max-w-xl text-xl lg:text-2xl font-light leading-relaxed"
+              className="text-white/30 max-w-2xl text-xl lg:text-3xl font-light leading-relaxed"
             >
-              We bypass conventional agency models to architect high-performance digital systems that dominate their niche.
+              We bypass conventional models to architect cinematic digital ecosystems that define industry standards.
             </motion.p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
           {SERVICES.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 1 }}
+              transition={{ delay: index * 0.15, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => onNavigate('detailed-services')}
-              className="group bg-white/[0.02] border border-white/5 p-12 lg:p-16 rounded-[60px] cursor-pointer relative overflow-hidden flex flex-col h-full hover:bg-white/[0.05] transition-all duration-700 shadow-2xl"
+              className="luxury-service-card group"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#0fb9b1]/10 rounded-full blur-[100px] group-hover:bg-[#0fb9b1]/15 transition-colors duration-700" />
+              {/* Background Image Layer */}
+              <div 
+                className="luxury-card-img" 
+                style={{ backgroundImage: `url(${service.image})` }} 
+              />
               
-              <div className="w-20 h-20 rounded-[30px] bg-white/[0.05] border border-white/10 flex items-center justify-center mb-12 group-hover:bg-[#0fb9b1] group-hover:text-white transition-all duration-700 shadow-3xl">
-                <div className="scale-125">{service.icon}</div>
-              </div>
+              {/* Glass Overlay Layer */}
+              <div className="luxury-card-overlay" />
               
-              <h3 className="text-3xl lg:text-4xl font-bold mb-8 tracking-tight group-hover:text-[#0fb9b1] transition-colors duration-500 leading-tight">
-                {service.title}
-              </h3>
-              
-              <p className="text-white/30 text-lg lg:text-xl mb-14 font-light leading-relaxed group-hover:text-white/50 transition-colors duration-500 flex-grow">
-                {service.description}
-              </p>
-              
-              <div className="flex items-center gap-4 text-[#0fb9b1] font-bold text-[11px] uppercase tracking-[0.5em] group-hover:translate-x-3 transition-transform duration-700">
-                Deep Dive <ArrowUpRight size={20} />
+              {/* Content Layer */}
+              <div className="relative z-10 p-12 lg:p-16 h-full flex flex-col">
+                <div className="luxury-icon-box">
+                  {React.cloneElement(service.icon as React.ReactElement, { className: "w-10 h-10 transition-all group-hover:scale-110" })}
+                </div>
+                
+                <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-white group-hover:text-[#0fb9b1] transition-colors duration-500 leading-tight tracking-tight">
+                  {service.title}
+                </h3>
+                
+                <p className="text-white/40 text-lg lg:text-xl mb-12 font-light leading-relaxed group-hover:text-white/70 transition-colors duration-700 flex-grow">
+                  {service.description}
+                </p>
+                
+                <div className="luxury-card-link">
+                  Deep Dive <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500" />
+                </div>
               </div>
             </motion.div>
           ))}
