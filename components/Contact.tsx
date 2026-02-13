@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CONTACT_LINKS } from '../constants';
 import { Facebook, Mail, MessageCircle, ArrowUpRight } from 'lucide-react';
-import { ViewType } from '../App';
+// Changed import from '../App' to '../types' as App.tsx was removed
+import { ViewType } from '../types';
 
 interface ContactProps {
   onNavigate: (view: ViewType) => void;
@@ -54,7 +54,7 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               whileHover={{ y: -10, backgroundColor: "rgba(37, 211, 102, 0.2)" }}
               className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col items-center gap-4 transition-all group"
             >
-              <div className="w-14 h-14 bg-[#25D366] rounded-2xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(37,211,102,0.4)]">
+              <div className="w-14 h-14 bg-[#25D366] rounded-2xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(37, 211, 102, 0.4)]">
                 <MessageCircle size={28} />
               </div>
               <span className="text-white font-bold text-lg">WhatsApp Concierge</span>
@@ -66,11 +66,11 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               whileHover={{ y: -10, backgroundColor: "rgba(15, 185, 177, 0.2)" }}
               className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col items-center gap-4 transition-all group"
             >
-              <div className="w-14 h-14 bg-[#0fb9b1] rounded-2xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(15,185,177,0.4)]">
+              <div className="w-14 h-14 bg-[#0fb9b1] rounded-2xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(15, 185, 177, 0.4)]">
                 <Mail size={28} />
               </div>
               <span className="text-white font-bold text-lg">Business Inquiry</span>
-              <span className="text-white/40 text-sm group-hover:text-white/80 transition-colors">{CONTACT_LINKS.emailRaw}</span>
+              <span className="text-white/40 text-sm group-hover:text-white/80 transition-colors">Open Mailer Desk</span>
             </motion.a>
 
             <motion.a
@@ -79,7 +79,7 @@ const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               whileHover={{ y: -10, backgroundColor: "rgba(24, 119, 242, 0.2)" }}
               className="p-8 rounded-[40px] bg-white/5 border border-white/10 flex flex-col items-center gap-4 transition-all group"
             >
-              <div className="w-14 h-14 bg-[#1877F2] rounded-2xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(24,119,242,0.4)]">
+              <div className="w-14 h-14 bg-[#1877F2] rounded-2xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(24, 119, 242, 0.4)]">
                 <Facebook size={28} />
               </div>
               <span className="text-white font-bold text-lg">Direct Facebook</span>

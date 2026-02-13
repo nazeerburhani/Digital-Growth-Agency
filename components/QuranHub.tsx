@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { QURAN_SUBJECTS, CONTACT_LINKS } from '../constants';
-import { CheckCircle2, Users, GraduationCap, Award, Calendar, ArrowRight } from 'lucide-react';
-import { ViewType } from '../App';
+import { Users, Award, Calendar, ArrowRight, BookOpen } from 'lucide-react';
+import { ViewType } from '../types';
 
 interface QuranHubProps {
   onNavigate: (view: ViewType) => void;
@@ -11,83 +10,78 @@ interface QuranHubProps {
 
 const QuranHub: React.FC<QuranHubProps> = ({ onNavigate }) => {
   return (
-    <section id="quranhub" className="py-20 lg:py-28 bg-[#f5faf9] px-5 sm:px-10 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-white rounded-full blur-[80px] opacity-40" />
-      
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="quranhub" className="py-24 lg:py-32 bg-[#080808] px-6 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0fb9b1]/5 rounded-full blur-[120px] opacity-20 pointer-events-none" />
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full shadow-sm text-[#0fb9b1] font-bold text-[10px] mb-6 border border-teal-50">
-              <Calendar size={12} />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[#0fb9b1] font-bold text-[10px] uppercase tracking-[0.3em] mb-8">
+              <Calendar size={12} className="text-[#ff6b6b]" />
               Academic Session 2024-25
             </div>
-            
-            <h2 className="text-4xl lg:text-6xl font-bold text-[#121417] mb-6 tracking-tight leading-[1.1]">
-              Bridging <span className="text-[#0fb9b1]">Faith</span> & <br className="hidden lg:block" />Academic Excellence.
+            <h2 className="text-4xl lg:text-6xl font-bold text-white mb-8 tracking-tighter leading-tight">
+              Nurturing <br />
+              <span className="text-[#0fb9b1]">Faith</span> & <span className="text-[#ff6b6b]">Intellect.</span>
             </h2>
-            
-            <p className="text-base lg:text-lg text-[#6b7280] mb-10 leading-relaxed font-light px-2 lg:px-0">
-              The premium education system combining world-class Quranic studies with core academic mastery (Physics, Math, Science).
+            <p className="text-lg lg:text-xl text-white/30 mb-12 leading-relaxed font-light">
+              A premium holistic education hub merging world-class Quranic studies with core academic mastery in STEM subjects.
             </p>
-
-            <div className="grid grid-cols-2 gap-4 mb-10">
+            
+            <div className="grid grid-cols-2 gap-6 mb-12">
               {[
-                { label: "Students", value: "1.2K+", icon: <Users size={16} /> },
-                { label: "Faculty", value: "45+", icon: <Award size={16} /> },
+                { label: "Active Learners", value: "1.2K+", icon: <Users size={18} /> },
+                { label: "Expert Faculty", value: "45+", icon: <Award size={18} /> },
               ].map((stat, i) => (
-                <div key={i} className="bg-white p-5 rounded-2xl border border-teal-50 shadow-sm flex flex-col items-center lg:items-start group transition-all hover:border-[#0fb9b1]/30">
-                  <div className="w-8 h-8 rounded-lg bg-[#f0f9f8] text-[#0fb9b1] flex items-center justify-center mb-3 group-hover:bg-[#0fb9b1] group-hover:text-white transition-colors">
+                <div key={i} className="glass p-8 rounded-[32px] group transition-all hover:bg-white/[0.04]">
+                  <div className="w-10 h-10 rounded-xl bg-[#0fb9b1]/10 text-[#0fb9b1] flex items-center justify-center mb-6 group-hover:bg-[#0fb9b1] group-hover:text-white transition-colors">
                     {stat.icon}
                   </div>
-                  <div className="text-xl lg:text-2xl font-bold text-[#121417] leading-none mb-1">{stat.value}</div>
-                  <div className="text-[10px] font-bold text-[#9ca3af] uppercase tracking-widest">{stat.label}</div>
+                  <div className="text-3xl font-bold text-white mb-1 tracking-tighter">{stat.value}</div>
+                  <div className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em]">{stat.label}</div>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
+            <div className="flex flex-col sm:flex-row gap-5">
               <motion.button 
                 onClick={() => onNavigate('quranhub-academy')}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-[#ff6b6b] text-white px-8 py-4 rounded-xl font-bold text-base shadow-lg shadow-red-200/50 flex items-center justify-center gap-2"
+                className="bg-[#ff6b6b] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-[0_15px_30px_rgba(255,107,107,0.2)] flex items-center justify-center gap-3 hover:scale-[1.02] transition-all"
               >
-                Enroll Now
-                <ArrowRight size={18} />
+                Enrollment Hub
+                <ArrowRight size={20} />
               </motion.button>
-              <motion.a 
+              <a 
                 href={CONTACT_LINKS.whatsapp}
                 target="_blank"
-                whileHover={{ scale: 1.02 }}
-                className="bg-white text-[#121417] px-8 py-4 rounded-xl font-bold text-base border border-gray-100 flex items-center justify-center gap-2"
+                rel="noreferrer"
+                className="bg-white/5 text-white px-8 py-4 rounded-xl font-bold text-lg border border-white/10 flex items-center justify-center gap-3 hover:bg-white/10 transition-all backdrop-blur-md"
               >
-                WhatsApp Inquiry
-              </motion.a>
+                Direct Inquiry
+              </a>
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4 mt-8 lg:mt-0">
+          <div className="grid grid-cols-2 gap-6">
             {QURAN_SUBJECTS.map((subject, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.08 }}
                 onClick={() => onNavigate('quranhub-academy')}
-                className="bg-white p-6 rounded-[24px] shadow-sm border border-gray-50 flex flex-col items-center text-center group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all"
+                className="glass-card p-8 lg:p-10 rounded-[40px] flex flex-col items-center text-center group cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#f0f9f8] text-[#0fb9b1] flex items-center justify-center mb-4 group-hover:bg-[#0fb9b1] group-hover:text-white transition-all">
-                  {subject.icon}
+                <div className="w-14 h-14 rounded-2xl bg-[#0fb9b1]/5 text-[#0fb9b1] flex items-center justify-center mb-6 group-hover:bg-[#0fb9b1] group-hover:text-white transition-all duration-500 group-hover:-translate-y-1">
+                  <div className="scale-110">{subject.icon}</div>
                 </div>
-                <h3 className="text-sm lg:text-base font-bold text-[#121417] tracking-tight">{subject.name}</h3>
-                <div className="mt-2 text-[9px] font-bold text-[#9ca3af] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                  View Detail
+                <h3 className="text-lg font-bold text-white group-hover:text-[#0fb9b1] transition-colors">{subject.name}</h3>
+                <div className="mt-3 text-[9px] font-black text-white/20 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                  Mastery Syllabus
                 </div>
               </motion.div>
             ))}

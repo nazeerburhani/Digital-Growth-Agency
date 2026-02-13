@@ -1,50 +1,65 @@
-
 import React from 'react';
-import { motion } from 'framer-motion';
-import { FOUNDER_IMAGE_CINEMATIC } from '../constants';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { VISION_VISUAL } from '../constants';
 
 const Vision: React.FC = () => {
+  const { scrollYProgress } = useScroll();
+  const scale = useTransform(scrollYProgress, [0.4, 0.6], [0.95, 1]);
+  const rotate = useTransform(scrollYProgress, [0.4, 0.6], [5, 0]);
+
   return (
-    <section className="py-16 lg:py-32 px-4 sm:px-6 bg-[#1c1e21] overflow-hidden relative">
-      <div className="absolute inset-0 opacity-5 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+    <section className="py-60 lg:py-80 bg-[#080808] overflow-hidden relative">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] mix-blend-overlay" />
       
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 lg:gap-52 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
             className="order-2 lg:order-1 text-center lg:text-left"
           >
-            <div className="text-[#0fb9b1] font-black text-[10px] lg:text-xs uppercase tracking-[0.5em] mb-6 lg:mb-8 text-center lg:text-left">The Core Philosophy</div>
-            <h2 className="text-4xl lg:text-8xl font-bold text-white mb-6 lg:mb-10 tracking-tighter leading-[1] lg:leading-[0.95]">
-              Innovation <br />Through <span className="gradient-text-teal">Precision.</span>
+            <div className="text-[#0fb9b1] font-black text-[12px] lg:text-[14px] uppercase tracking-[1em] mb-16 flex items-center justify-center lg:justify-start gap-10">
+              <div className="w-20 h-[2px] bg-[#0fb9b1]" />
+              Nazeer Ahmad
+            </div>
+            
+            <h2 className="text-7xl md:text-8xl lg:text-[110px] font-bold text-white mb-16 tracking-[-0.07em] leading-[0.85]">
+              Precision.<br />
+              <span className="gradient-text-teal">Mastery.</span>
             </h2>
-            <p className="text-lg lg:text-2xl text-white/60 font-light leading-relaxed mb-10 lg:mb-12 max-w-xl mx-auto lg:mx-0">
-              "My vision is to bridge the gap between technical complexity and human intuition. Every pixel and line of code is crafted to drive one thing: <span className="text-white font-medium">Excellence.</span>"
+            
+            <p className="text-2xl lg:text-5xl text-white/50 font-light leading-[1.3] mb-20 max-w-3xl mx-auto lg:mx-0 italic">
+              "Fusing absolute technical complexity with human intuition. Every pixel is crafted for <span className="text-white font-medium not-italic underline decoration-[#0fb9b1]/40 underline-offset-[18px]">excellence</span>."
             </p>
-            <div className="flex items-center justify-center lg:justify-start gap-4 lg:gap-6">
-              <div className="w-12 lg:w-16 h-1 bg-[#0fb9b1]" />
-              <div className="text-white font-black text-sm lg:text-xl tracking-widest uppercase">Nazeer Ahmad</div>
+            
+            <div className="flex items-center justify-center lg:justify-start gap-12">
+              <div className="w-32 h-[2px] bg-gradient-to-r from-[#0fb9b1] to-transparent" />
+              <div className="text-white font-black text-3xl tracking-[0.5em] uppercase font-display">Nazeer Ahmad</div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 50 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            style={{ scale, rotate }}
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 1.8, ease: [0.19, 1, 0.22, 1] }}
             className="relative order-1 lg:order-2 flex justify-center lg:block"
           >
-            <div className="relative z-10 rounded-[30px] lg:rounded-[100px] overflow-hidden shadow-2xl aspect-square border-4 lg:border-[12px] border-white/5 max-w-sm sm:max-w-md lg:max-w-none w-full">
+            <div className="relative z-10 rounded-[120px] lg:rounded-[180px] overflow-hidden shadow-[0_100px_200px_rgba(0,0,0,1)] aspect-square border-[20px] lg:border-[35px] border-white/5 max-w-2xl w-full group">
               <img 
-                src={FOUNDER_IMAGE_CINEMATIC} 
-                alt="Founder Cinematic Portrait" 
-                className="w-full h-full object-cover transition-transform duration-[3s] hover:scale-110"
+                src={VISION_VISUAL} 
+                alt="Cinematic Mastery" 
+                className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[6s] group-hover:scale-110"
               />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0fb9b1]/15 to-transparent mix-blend-color" />
             </div>
             
-            <div className="absolute -top-10 -right-10 w-40 h-40 lg:w-80 lg:h-80 bg-[#0fb9b1]/20 rounded-full blur-[60px] lg:blur-[100px] -z-10" />
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 lg:w-80 lg:h-80 bg-[#ff6b6b]/10 rounded-full blur-[60px] lg:blur-[100px] -z-10" />
+            {/* Ambient Depth Elements */}
+            <div className="absolute -top-32 -right-32 w-[600px] h-[600px] bg-[#0fb9b1]/10 rounded-full blur-[160px] -z-10 animate-pulse-slow" />
+            <div className="absolute -bottom-32 -left-32 w-[600px] h-[600px] bg-[#ff6b6b]/5 rounded-full blur-[160px] -z-10" />
           </motion.div>
         </div>
       </div>

@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PROCESS_STEPS } from '../constants';
-import { ViewType } from '../App';
+// Changed import from '../App' to '../types' as App.tsx was removed
+import { ViewType } from '../types';
 import { Rocket } from 'lucide-react';
 
 interface ProcessProps {

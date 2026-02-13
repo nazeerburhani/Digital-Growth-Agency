@@ -1,4 +1,7 @@
 
+// Define ViewType for app-wide navigation state
+export type ViewType = 'home' | 'project-form' | 'detailed-services' | 'all-projects' | 'quranhub-academy';
+
 export interface ServiceCard {
   title: string;
   description: string;
